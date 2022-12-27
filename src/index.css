@@ -1,9 +1,14 @@
 :root {
+  --backgroundBlack: #010101;
   --backgroundGreen: #41e1ba;
   --backgroundRed: #ef5d50;
-  --backgroundWhite: #fff;
-  --boxShadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  --backgroundWhite: #eee;
+  --boxShadow: 0 0 20px 10px rgba(0, 0, 0, 0.5);
   --colorBlack: #000;
+  --colorRed: rgb(142, 29, 21);
+  --colorGreen: rgb(17, 73, 59);
+  --fontLight: 'Sora', sans-serif;
+  --fontBold: 'Andika', sans-serif;
 }
 * {
   margin: 0;
@@ -17,6 +22,12 @@ body {
   background: var(--backgroundGreen);
   transition: background-color 300ms ease-in-out;
   line-height: 1.5;
+}
+.form {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
 }
 
 .container {
@@ -41,11 +52,24 @@ body {
 }
 
 .pomodoro h2 {
+  font-family: var(--fontLight);
   font-size: 24px;
+  text-align: center;
+}
+.pomodoro h2 span {
+  font-family: var(--fontLight);
+  font-weight: bold;
+  color: var(--colorGreen);
+  text-align: center;
+}
+.pomodoro h2 span.work {
+  font-family: var(--fontLight);
+  color: var(--colorRed);
   text-align: center;
 }
 
 .pomodoro .timer {
+  font-family: var(--fontBold);
   font-size: 6rem;
   text-align: center;
 }
@@ -64,6 +88,7 @@ body {
   color: var(--colorBlack: );
   transition: background-color 300ms ease-in-out;
   margin: 20px auto;
+  font-family: var(--fontLight);
 }
 
 .working .pomodoro button {
@@ -73,4 +98,8 @@ body {
 
 .pomodoro .details {
   margin: 20px 0;
+  font-family: var(--fontBold);
+}
+.pomodoro .details span {
+  font-family: var(--fontLight);
 }

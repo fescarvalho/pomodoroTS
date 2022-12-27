@@ -11,7 +11,7 @@ const audioStartWorking = new Audio(bellStart);
 const audioStopWorking = new Audio(bellStop);
 
 interface Props {
-  pomodoroTimer: number;
+  pomodoroTimer: number | any;
   shortRestTime: number;
   longRestTime: number;
   cycles: number;
@@ -100,7 +100,12 @@ export function PomodoroTimer(props: Props): JSX.Element {
 
   return (
     <div className="pomodoro">
-      <h2>Você esta: {working ? 'Trabalhando' : 'Descansando'}</h2>
+      <h2>
+        Você esta:{' '}
+        <span className={working ? 'work' : ''}>
+          {working ? 'Trabalhando' : 'Descansando'}
+        </span>
+      </h2>
       <Timer mainTime={mainTime} />
       <div className="controls">
         <Button
@@ -120,9 +125,15 @@ export function PomodoroTimer(props: Props): JSX.Element {
         />
       </div>
       <div className="details">
-        <p>Ciclos Conluidos: {completedCycles}</p>
-        <p>Horas Trabalhadas: {secondsToTime(fullWorkingTime)}</p>
-        <p>Numeros de Pomodoros Concluidos: {numberOfPomodoros}</p>
+        <p>
+          Ciclos Conluidos: <span>{completedCycles}</span>{' '}
+        </p>
+        <p>
+          Horas Trabalhadas: <span>{secondsToTime(fullWorkingTime)}</span>
+        </p>
+        <p>
+          Numeros de Pomodoros Concluidos: <span>{numberOfPomodoros}</span>
+        </p>
       </div>
     </div>
   );
