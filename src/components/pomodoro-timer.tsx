@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useInterval } from '../hooks/use-interval';
 import { Button } from './Buttons';
 import { Timer } from './Timer';
@@ -12,20 +12,33 @@ interface Props {
 
 export function PomodoroTimer(props: Props): JSX.Element {
   const [mainTime, setMainTime] = useState(props.pomodoroTimer);
+  const [working, setWorking] = useState(false);
+  const [timeCounting, settimeCounting] = useState(false);
 
-  useInterval(() => {
-    setMainTime(mainTime - 1);
-  }, 1000);
+  useEffect(() => {
+    if (working) document.body.classList.add('working');
+  }, [working]);
 
+  useInterval(
+    () => {
+      setMainTime(mainTime - 1);
+    },
+    timeCounting ? 1000 : null,
+  );
+
+  const configureWorking = () => {
+    setWorking(true);
+    settimeCounting(true);
+  };
   return (
     <div className="pomodoro">
       <h2>Hellow, what time?</h2>
       <Timer mainTime={mainTime} />
       <div className="controls">
         <Button
-          text="Ola"
+          text="Working"
           className="button"
-          onClick={() => console.log('1')}
+          onClick={() => configureWorking()}
         />
         <Button
           text="Ola"
@@ -33,9 +46,9 @@ export function PomodoroTimer(props: Props): JSX.Element {
           onClick={() => console.log('1')}
         />
         <Button
-          text="Ola"
+          text={timeCounting ? 'Pause' : 'Play'}
           className="button"
-          onClick={() => console.log('1')}
+          onClick={() => settimeCounting(!timeCounting)}
         />
       </div>
       <div className="details">
