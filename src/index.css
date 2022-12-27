@@ -1,7 +1,9 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+:root {
+  --backgroundGreen: #41e1ba;
+  --backgroundRed: #ef5d50;
+  --backgroundWhite: #fff;
+  --boxShadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  --colorBlack: #000;
 }
 * {
   margin: 0;
@@ -12,7 +14,7 @@
 
 body {
   font-family: sans-serif;
-  background: #41e1ba;
+  background: var(--backgroundGreen);
   transition: background-color 300ms ease-in-out;
   line-height: 1.5;
 }
@@ -23,7 +25,7 @@ body {
 }
 
 .working {
-  background: #ef5d50;
+  background: var(--backgroundRed);
 }
 
 .hidden {
@@ -31,11 +33,11 @@ body {
 }
 
 .pomodoro {
-  background: #fff;
+  background: var(--backgroundWhite);
   margin: 50px 20px;
   padding: 20px;
   border-radius: 4px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--boxShadow);
 }
 
 .pomodoro h2 {
@@ -55,18 +57,18 @@ body {
 }
 
 .pomodoro button {
-  background: #41e1ba;
+  background: var(--backgroundGreen);
   border: none;
   cursor: pointer;
   padding: 10px 25px;
-  color: #000;
+  color: var(--colorBlack: );
   transition: background-color 300ms ease-in-out;
   margin: 20px auto;
 }
 
 .working .pomodoro button {
-  background: #ef5d50;
-  color: #fff;
+  background: var(--backgroundRed);
+  color: var(--backgroundWhite);
 }
 
 .pomodoro .details {
